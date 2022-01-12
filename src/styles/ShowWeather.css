@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+.weather_container {
+  height: 100vh;
+  width: 400px;
+  background-color: #1e213a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.weather_container .search_container {
+  height: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather_container .img_container {
+  height: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.weather_container .img_container .cloud_background {
+  height: 110%;
+  opacity: 0.1;
+}
+
+.weather_container .img_container .weather_img {
+  position: absolute;
+  height: 150px;
+}
+
+.weather_container .info {
+  height: 50%;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.weather_container .info h2 {
+  font-size: 60px;
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+}
+
+.weather_container .info h3,
+.weather_container .info h4 {
+  opacity: 0.6;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .weather_container {
+    height: 600px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .weather_container {
+    height: 500px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .weather_container {
+    height: 600px;
+    width: 100vw;
+  }
+}
+/*# sourceMappingURL=ShowWeather.css.map */

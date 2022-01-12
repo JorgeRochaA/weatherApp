@@ -1,0 +1,46 @@
+$buttons_color: #72747f;
+.search {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .search_button {
+    height: 50px;
+    width: 150px;
+    margin-left: 30px;
+    background-color: $buttons_color;
+    border: none;
+    color: white;
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 10px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+  .location_button {
+    height: 50px;
+    width: 50px;
+    margin-right: 30px;
+    background-color: $buttons_color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    &:hover {
+        transform: scale(1.1);
+      cursor: pointer;
+    }
+    img {
+      height: 75%;
+    }
+  }
+}
