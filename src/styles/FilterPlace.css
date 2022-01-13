@@ -1,0 +1,93 @@
+.filter_container {
+  height: 100vh;
+  width: 400px;
+  background-color: #1e213a;
+}
+
+.filter_container .close {
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter_container .close .close_button {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter_container .close .close_button img {
+  height: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-top: 20px;
+}
+
+.filter_container .close .close_button img:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.filter_container .filter {
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.filter_container .filter input {
+  background-color: transparent;
+  height: 35px;
+  width: 230px;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.filter_container .filter input:focus {
+  color: white;
+}
+
+.filter_container .filter button {
+  height: 40px;
+  width: 70px;
+  border: none;
+  background-color: #3c47e9;
+  color: white;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.filter_container .filter button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.filter_container .locations {
+  height: 70%;
+  background-color: red;
+}
+/*# sourceMappingURL=FilterPlace.css.map */

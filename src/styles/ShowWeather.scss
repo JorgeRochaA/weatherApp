@@ -48,21 +48,22 @@
     }
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation:landscape) {
-.weather_container{
-  height: 600px;
-}
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .weather_container {
+    height: 600px;
+    width: 300px;
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-  .weather_container{
+  .weather_container {
     height: 500px;
     width: 300px;
   }
 }
 
 @media only screen and (max-width: 575px) {
-  .weather_container{
+  .weather_container {
     height: 600px;
     width: 100vw;
   }
