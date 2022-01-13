@@ -2,6 +2,11 @@
 .filter_container {
   height: 100vh;
   width: 400px;
+  transform: translateX(-400px);
+  position: absolute;
+  z-index: 3;
+  transition: .5s;
+
   background-color: #1e213a;
   .close {
     height: 10%;
@@ -21,11 +26,13 @@
         margin-top: 20px;
         &:hover {
           cursor: pointer;
-          transform: scale(1.1);
           transform: rotate(90deg);
         }
       }
     }
+  }
+  &.active {
+    transform: translateX(0px);
   }
   .filter {
     height: 20%;
@@ -50,6 +57,9 @@
       transition: 0.5s;
       &:hover {
         cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
     }
   }
@@ -80,7 +90,7 @@
       align-items: center;
       color: white;
       border: 1px solid transparent;
-      transition: .5s;
+      transition: 0.5s;
       img {
         height: 25%;
         transform: rotate(90deg);
