@@ -1,12 +1,12 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import "../styles/ShowWeather.scss";
 import Search from "../components/Search.jsx";
 import axios from "axios";
 function ShowWeather(props) {
   const [currentWoeid, setcurrentWoeid] = useState("2514815");
   const [currentWeather, setcurrentWeather] = useState([]);
-
-  useEffect(() => {
+  const getData = useRef();
+  const callInfo = () => {
     props.show();
     axios
       .get(`https://www.metaweather.com/api/location/${currentWoeid}`)
@@ -17,6 +17,11 @@ function ShowWeather(props) {
       .catch((err) => {
         console.log(err);
       });
+  };
+  getData.current = callInfo;
+
+  useEffect(() => {
+    getData.current();
   }, [currentWoeid]);
 
   useEffect(() => {
