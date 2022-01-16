@@ -30,10 +30,12 @@ function ShowWeather(props) {
     }
   }, [props.newWoeid]);
 
-  const getDayName = (dateStr) => {
+  /*
+const getDayName = (dateStr) => {
     var date = new Date(dateStr);
     return date.toLocaleDateString("en-US", { weekday: "long" });
   };
+  */
 
   return (
     <div className="weather_container">
