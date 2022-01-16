@@ -1,0 +1,72 @@
+.loader {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-color: #34374d;
+  display: none;
+  .gif_container {
+    height: 250px;
+    width: 250px;
+    position: relative;
+    .spring {
+      top: -10px;
+      left: -10px;
+      background-color: #138f39;
+    }
+    .summer {
+      top: -10px;
+      right: -10px;
+      background-color: #ffe001;
+    }
+    .fall {
+      bottom: -10px;
+      right: -10px;
+      background-color: #f13b09;
+    }
+    .winter {
+      bottom: -10px;
+      left: -10px;
+      background-color: #0da2d8;
+    }
+  }
+  & .gif_container > div {
+    height: 125px;
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 10px;
+    animation: rotate 1s linear infinite alternate;
+    img {
+      height: 50%;
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(20deg);
+    }
+    100% {
+      transform: rotate(-20deg);
+    }
+  }
+
+  &.show {
+    display: grid;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .loader {
+    height: 600px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .loader {
+    height: 500px;
+  }
+}

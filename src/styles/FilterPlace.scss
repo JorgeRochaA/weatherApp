@@ -5,7 +5,7 @@
   transform: translateX(-400px);
   position: absolute;
   z-index: 3;
-  transition: .5s;
+  transition: 0.5s;
 
   background-color: #1e213a;
   .close {
@@ -34,35 +34,6 @@
   &.active {
     transform: translateX(0px);
   }
-  .filter {
-    height: 20%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    input {
-      background-color: transparent;
-      height: 35px;
-      width: 230px;
-      text-align: center;
-      border: 1px solid white;
-      outline: none;
-      color: white;
-    }
-    button {
-      height: 40px;
-      width: 70px;
-      border: none;
-      background-color: #3c47e9;
-      color: white;
-      transition: 0.5s;
-      &:hover {
-        cursor: pointer;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-      }
-    }
-  }
   .locations_container {
     height: 70%;
     overflow-y: auto;
@@ -78,55 +49,12 @@
     &::-webkit-scrollbar-thumb {
       background: #e8e8eb;
     }
-    .locations {
-      height: 50px;
-      width: 340px;
-      margin-left: 0;
-      margin-right: 0;
-      margin: auto;
-      margin-bottom: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      border: 1px solid transparent;
-      transition: 0.5s;
-      img {
-        height: 25%;
-        transform: rotate(90deg);
-        transition: 0.5s;
-        margin-right: 10px;
-        opacity: 0.4;
-      }
-      h4 {
-        margin-left: 10px;
-        opacity: 0.9;
-      }
-
-      &:hover {
-        cursor: pointer;
-        border-color: #505366;
-      }
-      &:hover img {
-        transform: rotate(0deg);
-      }
-    }
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
   .filter_container {
     height: 600px;
     width: 300px;
-    .filter {
-      input {
-        width: 60%;
-      }
-    }
-    .locations_container {
-      .locations {
-        width: 90%;
-      }
-    }
   }
 }
 
@@ -134,24 +62,11 @@
   .filter_container {
     height: 500px;
     width: 300px;
-    .filter {
-      input {
-        width: 60%;
-      }
-    }
-    .locations_container {
-      .locations {
-        width: 90%;
-      }
-    }
   }
 }
 @media only screen and (max-width: 575px) {
   .filter_container {
     width: 100%;
-    .filter {
-      height: 15%;
-    }
     .locations_container {
       height: 75%;
     }

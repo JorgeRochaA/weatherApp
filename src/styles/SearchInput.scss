@@ -1,0 +1,48 @@
+.filter {
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  input {
+    background-color: transparent;
+    height: 35px;
+    width: 230px;
+    text-align: center;
+    border: 1px solid white;
+    outline: none;
+    color: white;
+  }
+  button {
+    height: 40px;
+    width: 70px;
+    border: none;
+    background-color: #3c47e9;
+    color: white;
+    transition: 0.5s;
+    &:hover {
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .filter {
+    input {
+      width: 60%;
+    }
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .filter {
+    input {
+      width: 60%;
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .filter {
+    height: 15%;
+  }
+}

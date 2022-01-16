@@ -1,6 +1,36 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import axios from "axios";
 import "../styles/FilterPlace.scss";
+import SearchInput from "./SearchInput";
+import LocationBox from "./LocationBox";
 function FilterPlace(props) {
+  const [location, setLocation] = useState("");
+  const [places, setPlaces] = useState([]);
+
+  const toggle = () => {
+    props.toggle();
+    setPlaces([]);
+  };
+
+  const search = (e) => {
+    setLocation(e);
+  };
+
+  useEffect(() => {
+    if (location.length) {
+      axios
+        .get(
+          `https://www.metaweather.com/api/location/search/?query=${location}`
+        )
+        .then((result) => {
+          setPlaces(result.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [location]);
+
   return (
     <div className={`filter_container ${props.menuIsOpen}`}>
       <div className="close">
@@ -8,57 +38,20 @@ function FilterPlace(props) {
           <img
             src={require("../assets/close.png")}
             alt="close button"
-            onClick={props.toggle}
+            onClick={toggle}
           />
         </div>
       </div>
-      <div className="filter">
-        <input
-          type="text"
-          name="location"
-          id="location_input"
-          placeholder="Search Location"
-          autoComplete="off"
-        />
-        <button>Search</button>
-      </div>
+      <SearchInput search={search} />
       <div className="locations_container">
-        <div className="locations">
-          <h4>London</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Tokio</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>New York</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Helsinki</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Helsinki</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Rio</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Denver</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Oslo</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
-        <div className="locations">
-          <h4>Pekín</h4>
-          <img src={require("../assets/right-arrow.png")} alt="arrow" />
-        </div>
+        {places.map((place, index) => (
+          <LocationBox
+            key={index}
+            place={place}
+            toggle={toggle}
+            sendWoeid={props.sendWoeid}
+          />
+        ))}
       </div>
     </div>
   );

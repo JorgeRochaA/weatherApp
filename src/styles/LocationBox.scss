@@ -1,0 +1,47 @@
+.locations {
+  height: 50px;
+  width: 340px;
+  margin-left: 0;
+  margin-right: 0;
+  margin: auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid transparent;
+  transition: 0.5s;
+  img {
+    height: 25%;
+    transform: rotate(90deg);
+    transition: 0.5s;
+    margin-right: 10px;
+    opacity: 0.4;
+  }
+  h4 {
+    margin-left: 10px;
+    opacity: 0.9;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: #505366;
+  }
+  &:hover img {
+    transform: rotate(0deg);
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .locations {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .locations {
+    width: 90%;
+  }
+}
