@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "../styles/SearchInput.scss";
+import "../styles/SearchInput/SearchInput.scss";
 function SearchInput(props) {
   const [locationName, setLocationName] = useState("");
 

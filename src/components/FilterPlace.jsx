@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/FilterPlace.scss";
+import "../styles/FilterPlace/FilterPlace.scss";
 import SearchInput from "./SearchInput";
 import LocationBox from "./LocationBox";
 function FilterPlace(props) {

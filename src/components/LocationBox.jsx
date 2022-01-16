@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/LocationBox.scss";
+import "../styles/LocationBox/LocationBox.scss";
 function LocationBox(props) {
   const getWeather = (e) => {
     props.sendWoeid(e);

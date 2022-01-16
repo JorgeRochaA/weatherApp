@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Search.scss";
+import "../styles/Search/Search.scss";
 function Search(props) {
   return (
     <div className="search">
