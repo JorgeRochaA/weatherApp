@@ -6,7 +6,8 @@ import LocationBox from "./LocationBox";
 function FilterPlace(props) {
   const [location, setLocation] = useState("");
   const [places, setPlaces] = useState([]);
-
+  const baseURL = "https://www.metaweather.com/api/location/search/?query=";
+  const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
   const toggle = () => {
     props.toggle();
     setPlaces([]);
@@ -19,9 +20,7 @@ function FilterPlace(props) {
   useEffect(() => {
     if (location.length) {
       axios
-        .get(
-          `https://www.metaweather.com/api/location/search/?query=${location}`
-        )
+        .get(`${crossDomain}${baseURL}${location}`)
         .then((result) => {
           setPlaces(result.data);
         })

@@ -5,11 +5,13 @@ import axios from "axios";
 function ShowWeather(props) {
   const [currentWoeid, setcurrentWoeid] = useState("2514815");
   const [currentWeather, setcurrentWeather] = useState([]);
+  const baseURL = "https://www.metaweather.com/api/location/";
+  const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
   const getData = useRef();
   const callInfo = () => {
     props.show();
     axios
-      .get(`https://www.metaweather.com/api/location/${currentWoeid}`)
+      .get(`${crossDomain}${baseURL}${currentWoeid}`)
       .then((result) => {
         setcurrentWeather(result.data);
         props.hide();
