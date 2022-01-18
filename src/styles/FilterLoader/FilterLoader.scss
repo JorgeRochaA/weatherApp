@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+.filter_loader {
+  height: 50px;
+  width: 340px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0.7;
+  display: none;
+  .loading__letter {
+    font-size: 1.2rem;
+    font-family: "Raleway", sans-serif;
+    animation: bounce 2s infinite;
+    margin: 0 2px;
+  }
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-5px);
+    }
+    80% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .loading__letter:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .loading__letter:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .loading__letter:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .loading__letter:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .loading__letter:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .loading__letter:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  .loading__letter:nth-child(8) {
+    animation-delay: 0.8s;
+  }
+  .loading__letter:nth-child(9) {
+    animation-delay: 1s;
+  }
+  .loading__letter:nth-child(10) {
+    animation-delay: 1.2s;
+  }
+  &.show {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  .filter_loader {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .filter_loader {
+    width: 90%;
+  }
+}

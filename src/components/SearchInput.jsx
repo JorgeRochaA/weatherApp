@@ -1,14 +1,18 @@
 import { React, useState } from "react";
 import "../styles/SearchInput/SearchInput.scss";
-function SearchInput(props) {
+function SearchInput({ search, fillTheInput }) {
   const [locationName, setLocationName] = useState("");
 
   const getValue = (e) => {
     setLocationName(e.target.value);
   };
   const sendValue = () => {
-    props.search(locationName);
-    setLocationName("");
+    if (locationName.length) {
+      search(locationName);
+      setLocationName("");
+    } else {
+      fillTheInput();
+    }
   };
   return (
     <div className="filter">
