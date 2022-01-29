@@ -1,5 +1,5 @@
-import React from "react";
 import "../styles/Loader/Loader.scss";
+import React from "react";
 function Loader(props) {
   return (
     <div className={`loader ${props.showLoader}`}>

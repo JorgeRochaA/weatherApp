@@ -1,13 +1,14 @@
-import { React, useState, useEffect, useRef } from "react";
 import "../styles/ShowWeather/ShowWeather.scss";
-import Search from "./Search";
+import { React, useState, useEffect, useRef } from "react";
 import axios from "axios";
+import Search from "./Search";
 function ShowWeather(props) {
-  const [currentWoeid, setcurrentWoeid] = useState("2514815");
   const [currentWeather, setcurrentWeather] = useState([]);
+  const [currentWoeid, setcurrentWoeid] = useState("2514815");
   const baseURL = "https://www.metaweather.com/api/location/";
   const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
   const getData = useRef();
+
   const callInfo = () => {
     props.show();
     axios
@@ -22,17 +23,6 @@ function ShowWeather(props) {
   };
   getData.current = callInfo;
 
-  useEffect(() => {
-    getData.current();
-  }, [currentWoeid]);
-
-  useEffect(() => {
-    if (props.newWoeid) {
-      setcurrentWeather([]);
-      setcurrentWoeid(props.newWoeid);
-    }
-  }, [props.newWoeid]);
-
   const getDate = (date) => {
     let separatedDate = date.split("-");
     return `${separatedDate[1]}/${separatedDate[2]}/${separatedDate[0]}`;
@@ -41,7 +31,6 @@ function ShowWeather(props) {
     let date = new Date(dateStr);
     return date.toLocaleDateString("en-US", { weekday: "long" });
   };
-
   const getMonthName = (dateStr) => {
     const monthNames = [
       "January",
@@ -68,6 +57,17 @@ function ShowWeather(props) {
     let dayNumber = separatedDate.split("/");
     return `${dayName}, ${dayNumber[1]}, ${monthName}`;
   };
+
+  useEffect(() => {
+    getData.current();
+  }, [currentWoeid]);
+
+  useEffect(() => {
+    if (props.newWoeid) {
+      setcurrentWeather([]);
+      setcurrentWoeid(props.newWoeid);
+    }
+  }, [props.newWoeid]);
 
   return (
     <div className="weather_container">

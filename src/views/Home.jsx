@@ -1,24 +1,27 @@
-import React, { useState } from "react";
 import "../styles/Home/Home.scss";
-import Loader from "../components/Loader";
-import ShowWeather from "../components/ShowWeather";
 import FilterPlace from "../components/FilterPlace";
+import Loader from "../components/Loader";
+import React, { useState } from "react";
+import ShowWeather from "../components/ShowWeather";
 function Home() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [woeid, setWoeid] = useState("");
   const [showLoader, setShowLoader] = useState("");
+  const [woeid, setWoeid] = useState("");
 
-  const toggle = () => {
-    setMenuIsOpen(!menuIsOpen);
+  const hide = () => {
+    setShowLoader("");
   };
+
   const sendWoeid = (e) => {
     setWoeid(e);
   };
+
   const show = () => {
     setShowLoader("show");
   };
-  const hide = () => {
-    setShowLoader("");
+
+  const toggle = () => {
+    setMenuIsOpen(!menuIsOpen);
   };
 
   return (

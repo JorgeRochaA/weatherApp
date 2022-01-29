@@ -1,22 +1,23 @@
+import "../styles/FilterPlace/FilterPlace.scss";
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/FilterPlace/FilterPlace.scss";
-import SearchInput from "./SearchInput";
-import LocationBox from "./LocationBox";
-import FilterLoader from "./FilterLoader";
 import ErrorMessage from "./ErrorMessage";
+import FilterLoader from "./FilterLoader";
+import LocationBox from "./LocationBox";
+import SearchInput from "./SearchInput";
 function FilterPlace(props) {
+  const [currentMessage, setCurrentMessage] = useState("");
   const [location, setLocation] = useState("");
   const [places, setPlaces] = useState([]);
-  const [showLoader, setShowLoader] = useState("");
-  const [currentMessage, setCurrentMessage] = useState("");
   const [showError, setShowError] = useState(false);
+  const [showLoader, setShowLoader] = useState("");
   const baseURL = "https://www.metaweather.com/api/location/search/?query=";
   const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
-  const toggle = () => {
-    props.toggle();
+
+  const fillTheInput = () => {
     setPlaces([]);
-    setShowError(false);
+    setShowError(true);
+    setCurrentMessage("Fill in the blank");
   };
 
   const search = (e) => {
@@ -24,10 +25,10 @@ function FilterPlace(props) {
     setLocation(e);
   };
 
-  const fillTheInput = () => {
+  const toggle = () => {
+    props.toggle();
     setPlaces([]);
-    setShowError(true);
-    setCurrentMessage("Fill in the blank");
+    setShowError(false);
   };
 
   useEffect(() => {

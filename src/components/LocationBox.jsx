@@ -1,6 +1,7 @@
-import React from "react";
 import "../styles/LocationBox/LocationBox.scss";
+import React from "react";
 function LocationBox(props) {
+  
   const getWeather = (e) => {
     props.sendWoeid(e);
     props.toggle();
