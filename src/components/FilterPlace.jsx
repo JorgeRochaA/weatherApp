@@ -8,26 +8,28 @@ import SearchInput from "./SearchInput";
 function FilterPlace(props) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [location, setLocation] = useState("");
-  const [places, setPlaces] = useState([]);
+  const [place, setPlace] = useState();
   const [showError, setShowError] = useState(false);
   const [showLoader, setShowLoader] = useState("");
-  const baseURL = "https://www.metaweather.com/api/location/search/?query=";
-  const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
+  const baseURL = "https://api.openweathermap.org/data/2.5/weather?";
+  const cityName = "q=";
+  const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
   const fillTheInput = () => {
-    setPlaces([]);
+    setPlace();
+    setLocation("");
     setShowError(true);
     setCurrentMessage("Fill in the blank");
   };
 
   const search = (e) => {
-    setPlaces([]);
+    setPlace();
     setLocation(e);
   };
 
   const toggle = () => {
     props.toggle();
-    setPlaces([]);
+    setPlace();
     setShowError(false);
   };
 
@@ -36,20 +38,18 @@ function FilterPlace(props) {
       setShowError(false);
       setShowLoader("show");
       axios
-        .get(`${crossDomain}${baseURL}${location}`)
+        .get(`${baseURL}${cityName}${location}${token}`)
         .then((result) => {
-          if (result.data.length) {
-            setPlaces(result.data);
-            setShowLoader("");
-            setLocation("");
-          } else {
-            setShowLoader("");
-            setCurrentMessage("Couldn't find the place");
-            setShowError(true);
-          }
+          setPlace(result.data);
+          setShowLoader("");
+          setLocation("");
+          setCurrentMessage("");
         })
         .catch((err) => {
           console.log(err);
+          setShowLoader("");
+          setCurrentMessage("Couldn't find the place");
+          setShowError(true);
         });
     }
   }, [location]);
@@ -69,14 +69,13 @@ function FilterPlace(props) {
       <div className="locations_container">
         <FilterLoader show={showLoader} />
         {showError && <ErrorMessage message={currentMessage} />}
-        {places.map((place, index) => (
+        {place && !showLoader && currentMessage === "" && (
           <LocationBox
-            key={index}
             place={place}
             toggle={toggle}
             sendWoeid={props.sendWoeid}
           />
-        ))}
+        )}
       </div>
     </div>
   );

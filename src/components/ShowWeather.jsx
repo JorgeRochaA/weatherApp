@@ -4,15 +4,16 @@ import axios from "axios";
 import Search from "./Search";
 function ShowWeather(props) {
   const [currentWeather, setcurrentWeather] = useState([]);
-  const [currentWoeid, setcurrentWoeid] = useState("2514815");
-  const baseURL = "https://www.metaweather.com/api/location/";
-  const crossDomain = "https://the-ultimate-api-challenge.herokuapp.com/";
+  const [currentWoeid, setcurrentWoeid] = useState("london");
+  const baseURL = "https://api.openweathermap.org/data/2.5/weather?";
+  const cityName = "q=";
+  const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
   const getData = useRef();
 
   const callInfo = () => {
     props.show();
     axios
-      .get(`${crossDomain}${baseURL}${currentWoeid}`)
+      .get(`${baseURL}${cityName}${currentWoeid}${token}`)
       .then((result) => {
         setcurrentWeather(result.data);
         props.hide();
@@ -90,13 +91,12 @@ function ShowWeather(props) {
       </div>
       <div className="info">
         <h2>
-          {currentWeather.consolidated_weather &&
-            currentWeather.consolidated_weather[0].the_temp.toFixed(0)}
-          °C
+          {currentWeather.main &&
+            (currentWeather.main.temp - 273.15).toFixed(1)}
+          ºC
         </h2>
         <h3>
-          {currentWeather.consolidated_weather &&
-            currentWeather.consolidated_weather[0].weather_state_name}
+          {currentWeather.weather && currentWeather.weather[0].description}
         </h3>
         {currentWeather.consolidated_weather && (
           <h4>
@@ -105,7 +105,7 @@ function ShowWeather(props) {
         )}
         <h4>
           <i className="fas fa-map-marker-alt"></i>
-          {currentWeather.consolidated_weather && " " + currentWeather.title}
+          {currentWeather.name && " " + currentWeather.name}
         </h4>
       </div>
     </div>
