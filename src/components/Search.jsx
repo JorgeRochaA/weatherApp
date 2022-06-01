@@ -6,9 +6,6 @@ function Search(props) {
       <button className="search_button" onClick={props.toggle}>
         Search for places
       </button>
-      <div className="location_button">
-        <img src={require("../assets/gps.png")} alt="gps logo" />
-      </div>
     </div>
   );
 }

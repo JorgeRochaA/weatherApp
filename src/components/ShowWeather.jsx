@@ -4,10 +4,11 @@ import axios from "axios";
 import Search from "./Search";
 function ShowWeather(props) {
   const [currentWeather, setcurrentWeather] = useState([]);
-  const [currentWoeid, setcurrentWoeid] = useState("london");
+  const [currentWoeid, setcurrentWoeid] = useState("new york");
   const baseURL = "https://api.openweathermap.org/data/2.5/weather?";
   const cityName = "q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
+  const [getIconURL, setgetIconURL] = useState("");
   const getData = useRef();
 
   const callInfo = () => {
@@ -16,6 +17,9 @@ function ShowWeather(props) {
       .get(`${baseURL}${cityName}${currentWoeid}${token}`)
       .then((result) => {
         setcurrentWeather(result.data);
+        setgetIconURL(
+          `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
+        );
         props.hide();
       })
       .catch((err) => {
@@ -23,41 +27,6 @@ function ShowWeather(props) {
       });
   };
   getData.current = callInfo;
-
-  const getDate = (date) => {
-    let separatedDate = date.split("-");
-    return `${separatedDate[1]}/${separatedDate[2]}/${separatedDate[0]}`;
-  };
-  const getDayName = (dateStr) => {
-    let date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", { weekday: "long" });
-  };
-  const getMonthName = (dateStr) => {
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    let date = new Date(dateStr);
-    return monthNames[date.getMonth()];
-  };
-
-  const renderDate = (date) => {
-    let separatedDate = getDate(date);
-    let dayName = getDayName(separatedDate);
-    let monthName = getMonthName(separatedDate);
-    let dayNumber = separatedDate.split("/");
-    return `${dayName}, ${dayNumber[1]}, ${monthName}`;
-  };
 
   useEffect(() => {
     getData.current();
@@ -81,12 +50,8 @@ function ShowWeather(props) {
           src={require("../assets/Cloud-background.png")}
           alt="cloud-background"
         />
-        {currentWeather.consolidated_weather && (
-          <img
-            className="weather_img"
-            src={require(`../assets/${currentWeather.consolidated_weather[0].weather_state_abbr}.png`)}
-            alt="weather_img"
-          />
+        {getIconURL && (
+          <img className="weather_img" src={getIconURL} alt="weather_img" />
         )}
       </div>
       <div className="info">
@@ -98,11 +63,7 @@ function ShowWeather(props) {
         <h3>
           {currentWeather.weather && currentWeather.weather[0].description}
         </h3>
-        {currentWeather.consolidated_weather && (
-          <h4>
-            {renderDate(currentWeather.consolidated_weather[0].applicable_date)}
-          </h4>
-        )}
+        <h4>{new Date().toDateString()}</h4>
         <h4>
           <i className="fas fa-map-marker-alt"></i>
           {currentWeather.name && " " + currentWeather.name}
