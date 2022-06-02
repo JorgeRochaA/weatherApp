@@ -1,7 +1,6 @@
 import "../styles/ForecastContainer/ForecastContainer.scss";
 import ForecastCard from "./ForecastCard";
 function ForecastContainer({ forecastWeather }) {
-  console.log(forecastWeather);
   return (
     <div className="forecast_container">
       {forecastWeather && (
