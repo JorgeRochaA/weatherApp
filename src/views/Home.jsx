@@ -1,23 +1,26 @@
+import "../styles/Home/Home.scss";
+
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import FilterPlace from "../components/FilterPlace";
+import ForecastContainer from "../components/ForecastContainer";
 import Loader from "../components/Loader";
 import ShowWeather from "../components/ShowWeather";
-
-import "../styles/Home/Home.scss";
 
 const Home = () => {
   const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
   const baseURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
-  const [cityName, setCityName] = useState("new york");
+  const [cityName, setCityName] = useState("costa rica");
+  const [currentForecastWeather, setcurrentForecastWeather] = useState();
   const [currentWeather, setCurrentWeather] = useState();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showLoader, setShowLoader] = useState("");
   const [weatherIconUrl, setWeatherIconUrl] = useState("");
 
-  const getWeather = () => {
+  useEffect(() => {
+    //get the weather for the current city
     setShowLoader("show");
     axios
       .get(`${baseURL}${cityName}${token}`)
@@ -33,15 +36,13 @@ const Home = () => {
     axios
       .get(`${baseURLForecast}${cityName}${token}`)
       .then((result) => {
+        const reduceList = result.data.list.splice(0, 4);
+        setcurrentForecastWeather(reduceList);
         setShowLoader("");
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  useEffect(() => {
-    getWeather();
   }, [cityName]);
 
   const toggle = () => {
@@ -62,7 +63,7 @@ const Home = () => {
         weatherImg={weatherIconUrl}
         weather={currentWeather}
       />
-      {/* <ForecastContainer /> */}
+      <ForecastContainer forecastWeather={currentForecastWeather} />
     </div>
   );
 };

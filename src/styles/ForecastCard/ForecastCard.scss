@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+.card {
+  height: 200px;
+  width: 150px;
+  background-color: #1e213a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  border-radius: 3px;
+  .weather_min_max_container {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

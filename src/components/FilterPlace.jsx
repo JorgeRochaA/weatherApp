@@ -1,5 +1,5 @@
 import "../styles/FilterPlace/FilterPlace.scss";
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
 import FilterLoader from "./FilterLoader";
