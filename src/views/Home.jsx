@@ -13,7 +13,7 @@ const Home = () => {
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
   const [cityName, setCityName] = useState("costa rica");
-  const [currentForecastWeather, setcurrentForecastWeather] = useState();
+  const [currentForecastWeather, setCurrentForecastWeather] = useState();
   const [currentWeather, setCurrentWeather] = useState();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showLoader, setShowLoader] = useState("");
@@ -37,7 +37,7 @@ const Home = () => {
       .get(`${baseURLForecast}${cityName}${token}`)
       .then((result) => {
         const reduceList = result.data.list.splice(0, 4);
-        setcurrentForecastWeather(reduceList);
+        setCurrentForecastWeather(reduceList);
         setShowLoader("");
       })
       .catch((err) => {
