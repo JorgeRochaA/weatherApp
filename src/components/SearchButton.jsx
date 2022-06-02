@@ -1,9 +1,9 @@
-import "../styles/Search/Search.scss";
+import "../styles/SearchButton/SearchButton.scss";
 import React from "react";
-function Search(props) {
+function Search({ toggle }) {
   return (
     <div className="search">
-      <button className="search_button" onClick={props.toggle}>
+      <button className="search_button" onClick={toggle}>
         Search for places
       </button>
     </div>

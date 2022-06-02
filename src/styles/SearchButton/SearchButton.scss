@@ -4,9 +4,9 @@ $buttons_color: #72747f;
   width: 100%;
   display: flex;
   justify-content: right;
-  margin-right: 30px;
   align-items: center;
   .search_button {
+    margin-right: 30px;
     height: 50px;
     width: 150px;
     background-color: $buttons_color;

@@ -4,55 +4,58 @@ import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
 import FilterLoader from "./FilterLoader";
 import LocationBox from "./LocationBox";
-import SearchInput from "./SearchInput";
 function FilterPlace(props) {
-  const [currentMessage, setCurrentMessage] = useState("");
-  const [location, setLocation] = useState("");
-  const [place, setPlace] = useState();
-  const [showError, setShowError] = useState(false);
-  const [showLoader, setShowLoader] = useState("");
-  const baseURL = "https://api.openweathermap.org/data/2.5/weather?";
-  const cityName = "q=";
+  const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
-  const fillTheInput = () => {
-    setPlace();
-    setLocation("");
-    setShowError(true);
-    setCurrentMessage("Fill in the blank");
-  };
-
-  const search = (e) => {
-    setPlace();
-    setLocation(e);
-  };
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [locationName, setLocationName] = useState("");
+  const [locationData, setLocationData] = useState();
+  const [showError, setShowError] = useState(false);
+  const [showLoader, setShowLoader] = useState("");
 
   const toggle = () => {
+    setShowError(false);
+    setLocationData();
+    setLocationName("");
     props.toggle();
-    setPlace();
+  };
+
+  const getValue = (e) => {
+    setLocationName(e.target.value);
+    setCurrentMessage("");
     setShowError(false);
   };
 
-  useEffect(() => {
-    if (location.length) {
-      setShowError(false);
+  const sendValue = () => {
+    if (locationName.length) {
       setShowLoader("show");
       axios
-        .get(`${baseURL}${cityName}${location}${token}`)
+        .get(`${baseURL}${locationName}${token}`)
         .then((result) => {
-          setPlace(result.data);
+          setLocationData(result.data);
           setShowLoader("");
-          setLocation("");
-          setCurrentMessage("");
+          setLocationName("");
         })
         .catch((err) => {
-          console.log(err);
-          setShowLoader("");
+          setShowError("show");
           setCurrentMessage("Couldn't find the place");
-          setShowError(true);
+          setShowLoader("");
+          setLocationName("");
         });
+    } else {
+      setCurrentMessage("Fill in the blank");
+      setShowError(true);
     }
-  }, [location]);
+  };
+
+  const sendLocationName = (e) => {
+    props.toggle();
+    props.setCityName(e);
+    setShowError(false);
+    setLocationData();
+    setLocationName("");
+  };
 
   return (
     <div className={`filter_container ${props.menuIsOpen}`}>
@@ -65,15 +68,26 @@ function FilterPlace(props) {
           />
         </div>
       </div>
-      <SearchInput search={search} fillTheInput={fillTheInput} />
+      <div className="filter">
+        <input
+          value={locationName}
+          onChange={getValue}
+          type="text"
+          name="locationName"
+          id="location_input"
+          placeholder="Search Location"
+          autoComplete="off"
+        />
+        <button onClick={sendValue}>Search</button>
+      </div>
       <div className="locations_container">
         <FilterLoader show={showLoader} />
         {showError && <ErrorMessage message={currentMessage} />}
-        {place && !showLoader && currentMessage === "" && (
+        {locationData && !showLoader && currentMessage === "" && (
           <LocationBox
-            place={place}
+            place={locationData}
             toggle={toggle}
-            sendWoeid={props.sendWoeid}
+            sendLocationName={sendLocationName}
           />
         )}
       </div>

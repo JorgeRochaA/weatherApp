@@ -1,24 +1,48 @@
-import "../styles/Home/Home.scss";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 import FilterPlace from "../components/FilterPlace";
 import Loader from "../components/Loader";
-import React, { useState } from "react";
 import ShowWeather from "../components/ShowWeather";
-function Home() {
+
+import "../styles/Home/Home.scss";
+
+const Home = () => {
+  const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
+  const baseURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=";
+  const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
+
+  const [cityName, setCityName] = useState("new york");
+  const [currentWeather, setCurrentWeather] = useState();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [showLoader, setShowLoader] = useState("");
-  const [woeid, setWoeid] = useState("");
+  const [weatherIconUrl, setWeatherIconUrl] = useState("");
 
-  const hide = () => {
-    setShowLoader("");
-  };
-
-  const sendWoeid = (e) => {
-    setWoeid(e);
-  };
-
-  const show = () => {
+  const getWeather = () => {
     setShowLoader("show");
+    axios
+      .get(`${baseURL}${cityName}${token}`)
+      .then((result) => {
+        setCurrentWeather(result.data);
+        setWeatherIconUrl(
+          `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get(`${baseURLForecast}${cityName}${token}`)
+      .then((result) => {
+        setShowLoader("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  useEffect(() => {
+    getWeather();
+  }, [cityName]);
 
   const toggle = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -29,11 +53,18 @@ function Home() {
       <Loader showLoader={showLoader} />
       <FilterPlace
         toggle={toggle}
-        sendWoeid={sendWoeid}
+        setCityName={setCityName}
         menuIsOpen={menuIsOpen ? "active" : ""}
       />
-      <ShowWeather toggle={toggle} newWoeid={woeid} show={show} hide={hide} />
+      <ShowWeather
+        toggle={toggle}
+        menuIsOpen={menuIsOpen}
+        weatherImg={weatherIconUrl}
+        weather={currentWeather}
+      />
+      {/* <ForecastContainer /> */}
     </div>
   );
-}
+};
+
 export default Home;
