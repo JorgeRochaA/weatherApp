@@ -1,0 +1,45 @@
+.percentageBar_container {
+  height: 55px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #a09fb1;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+
+  .percentage_numbers {
+    height: 14px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  .bar {
+    width: 229px;
+    height: 8px;
+    background: #e7e7eb;
+    border-radius: 80px;
+    position: relative;
+    overflow-x: hidden;
+    .bar_fill {
+      position: absolute;
+      width: 100px;
+      height: 8px;
+      transition: 1s;
+      transform: translateX(0);
+      background-color: #ffec65;
+      border-radius: 80px;
+    }
+  }
+  .percentage_icon {
+    width: 75%;
+    height: 14px;
+    text-align: right;
+  }
+}
