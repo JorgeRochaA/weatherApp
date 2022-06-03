@@ -2,7 +2,6 @@ import "../styles/ShowWeather/ShowWeather.scss";
 import { React } from "react";
 import SearchButton from "./SearchButton";
 function ShowWeather({ weatherImg, toggle, weather, menuIsOpen }) {
-  console.log(weather);
   return (
     <div className="weather_container">
       <div className="search_container">
