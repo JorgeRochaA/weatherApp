@@ -12,7 +12,7 @@ const Home = () => {
   const baseURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
-  const [cityName, setCityName] = useState("costa rica");
+  const [cityName, setCityName] = useState("Helsinki");
   const [currentForecastWeather, setCurrentForecastWeather] = useState();
   const [currentWeather, setCurrentWeather] = useState();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -36,7 +36,7 @@ const Home = () => {
     axios
       .get(`${baseURLForecast}${cityName}${token}`)
       .then((result) => {
-        const reduceList = result.data.list.splice(0, 4);
+        const reduceList = result.data.list.splice(1, 5);
         setCurrentForecastWeather(reduceList);
         setShowLoader("");
       })
@@ -44,6 +44,14 @@ const Home = () => {
         console.log(err);
       });
   }, [cityName]);
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [menuIsOpen]);
 
   const toggle = () => {
     setMenuIsOpen(!menuIsOpen);

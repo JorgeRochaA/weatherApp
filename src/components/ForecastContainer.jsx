@@ -27,6 +27,7 @@ function ForecastContainer({ forecastWeather }) {
           })}
         </div>
       )}
+      <div className="highlight_message">Today's Highlights</div>
     </div>
   );
 }

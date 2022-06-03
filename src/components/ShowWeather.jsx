@@ -23,8 +23,15 @@ function ShowWeather({ weatherImg, toggle, weather, menuIsOpen }) {
           ºC
         </h2>
         <h3>{weather && weather.weather[0].description}</h3>
-        <h4>{new Date().toDateString()}</h4>
-        <h4>
+        <h4 className="date">
+          {"Today • " +
+            new Date().toLocaleDateString("en-us", {
+              weekday: "short",
+              day: "numeric",
+              month: "short",
+            })}
+        </h4>
+        <h4 className="place">
           <i className="fas fa-map-marker-alt"></i>
           {weather && " " + weather.name}
         </h4>
