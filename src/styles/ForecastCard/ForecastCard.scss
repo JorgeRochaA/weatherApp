@@ -1,15 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap");
 .card {
-  height: 200px;
-  width: 150px;
+  height: 177px;
+  width: 120px;
   background-color: #1e213a;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-direction: column;
-  font-family: "Raleway", sans-serif;
-  border-radius: 3px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  .date {
+    text-align: center;
+    width: 76px;
+    height: 19px;
+  }
+  .icon {
+    width: auto;
+    height: 62px;
+  }
   .weather_min_max_container {
     width: 90%;
     display: flex;

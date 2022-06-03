@@ -5,28 +5,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  font-family: "Raleway";
+  font-style: normal;
 
   .forecast_cards_container {
     height: 200px;
     width: 100%;
     display: grid;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(5, auto);
+    gap: 26px;
+  }
+  .highlight_message {
+    width: 100%;
+    color: #e7e7eb;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .forecast_container {
-    height: 600px;
+    height: auto;
     width: 100vw !important;
   }
 }
 
 @media screen and (max-width: 576px) {
   .forecast_cards_container {
-    grid-template-columns: auto auto !important;
+    grid-template-columns: repeat(2, auto) !important;
     height: auto !important;
-    gap: 10px 0;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 769px) {
+  .forecast_cards_container {
+    height: auto !important;
+    padding: 26px 0;
+    grid-template-columns: repeat(4, auto) !important;
   }
 }
