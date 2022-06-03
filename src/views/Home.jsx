@@ -12,7 +12,7 @@ const Home = () => {
   const baseURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";
 
-  const [cityName, setCityName] = useState("Helsinki");
+  const [cityName, setCityName] = useState("costa rica");
   const [currentForecastWeather, setCurrentForecastWeather] = useState();
   const [currentWeather, setCurrentWeather] = useState();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -71,7 +71,10 @@ const Home = () => {
         weatherImg={weatherIconUrl}
         weather={currentWeather}
       />
-      <ForecastContainer forecastWeather={currentForecastWeather} />
+      <ForecastContainer
+        weather={currentWeather}
+        forecastWeather={currentForecastWeather}
+      />
     </div>
   );
 };

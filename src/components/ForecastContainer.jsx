@@ -1,6 +1,7 @@
 import "../styles/ForecastContainer/ForecastContainer.scss";
 import ForecastCard from "./ForecastCard";
-function ForecastContainer({ forecastWeather }) {
+import HighlightsContainer from "./HighlightsContainer";
+function ForecastContainer({ weather, forecastWeather }) {
   return (
     <div className="forecast_container">
       {forecastWeather && (
@@ -28,6 +29,7 @@ function ForecastContainer({ forecastWeather }) {
         </div>
       )}
       <div className="highlight_message">Today's Highlights</div>
+      <HighlightsContainer weather={weather} />
     </div>
   );
 }

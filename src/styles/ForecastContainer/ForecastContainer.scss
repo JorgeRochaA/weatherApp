@@ -38,6 +38,12 @@
   .forecast_cards_container {
     grid-template-columns: repeat(2, auto) !important;
     height: auto !important;
+    padding: 26px 0;
+    .highlight_message {
+      height: 52px;
+      display: grid;
+      align-items: center;
+    }
   }
 }
 @media screen and (min-width: 576px) and (max-width: 769px) {
@@ -45,5 +51,16 @@
     height: auto !important;
     padding: 26px 0;
     grid-template-columns: repeat(4, auto) !important;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 1200px) and (orientation: landscape) {
+  .forecast_cards_container {
+    padding: 26px 0;
+  }
+  .highlight_message {
+    height: 52px;
+    display: grid;
+    align-items: center;
   }
 }
