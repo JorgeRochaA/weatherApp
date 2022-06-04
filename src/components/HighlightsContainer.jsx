@@ -1,7 +1,8 @@
-import "../styles/HighlightsContainer/HighlightsContainer.scss";
+import React from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import PercentageBar from "./PercentageBar";
-import React from "react";
+import "../styles/HighlightsContainer/HighlightsContainer.scss";
+
 function HighlightsContainer({ weather }) {
   return (
     <Fragment>

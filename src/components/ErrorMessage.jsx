@@ -1,5 +1,6 @@
-import "../styles/ErrorMessage/ErrorMessage.scss";
 import React from "react";
+import "../styles/ErrorMessage/ErrorMessage.scss";
+
 function ErrorMessage({ message }) {
   return (
     <div className="error_container">

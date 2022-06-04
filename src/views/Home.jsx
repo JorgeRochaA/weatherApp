@@ -1,11 +1,10 @@
-import "../styles/Home/Home.scss";
-
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 import FilterPlace from "../components/FilterPlace";
 import ForecastContainer from "../components/ForecastContainer";
 import Loader from "../components/Loader";
 import ShowWeather from "../components/ShowWeather";
+import "../styles/Home/Home.scss";
 
 const Home = () => {
   const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";

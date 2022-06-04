@@ -1,9 +1,10 @@
-import "../styles/FilterPlace/FilterPlace.scss";
 import { React, useState } from "react";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
 import FilterLoader from "./FilterLoader";
 import LocationBox from "./LocationBox";
+import "../styles/FilterPlace/FilterPlace.scss";
+
 function FilterPlace(props) {
   const baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
   const token = "&appid=c47ba15af012e0d9a3f077e2a7c07b1d";

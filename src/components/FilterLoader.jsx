@@ -1,5 +1,6 @@
-import "../styles/FilterLoader/FilterLoader.scss";
 import React from "react";
+import "../styles/FilterLoader/FilterLoader.scss";
+
 function FilterLoader({ show }) {
   return (
     <div className={`filter_loader ${show}`}>

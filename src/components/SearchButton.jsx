@@ -1,5 +1,6 @@
-import "../styles/SearchButton/SearchButton.scss";
 import React from "react";
+import "../styles/SearchButton/SearchButton.scss";
+
 function Search({ toggle }) {
   return (
     <div className="search">

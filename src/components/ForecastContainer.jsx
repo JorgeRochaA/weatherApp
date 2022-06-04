@@ -1,6 +1,7 @@
-import "../styles/ForecastContainer/ForecastContainer.scss";
 import ForecastCard from "./ForecastCard";
 import HighlightsContainer from "./HighlightsContainer";
+import "../styles/ForecastContainer/ForecastContainer.scss";
+
 function ForecastContainer({ weather, forecastWeather }) {
   return (
     <div className="forecast_container">

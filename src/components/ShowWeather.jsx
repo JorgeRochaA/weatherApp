@@ -1,6 +1,7 @@
-import "../styles/ShowWeather/ShowWeather.scss";
 import { React } from "react";
 import SearchButton from "./SearchButton";
+import "../styles/ShowWeather/ShowWeather.scss";
+
 function ShowWeather({ weatherImg, toggle, weather, menuIsOpen }) {
   return (
     <div className="weather_container">

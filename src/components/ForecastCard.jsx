@@ -1,6 +1,5 @@
-import "../styles/ForecastCard/ForecastCard.scss";
-
 import React from "react";
+import "../styles/ForecastCard/ForecastCard.scss";
 
 function ForecastCard({ date, min, max, icon }) {
   return (
