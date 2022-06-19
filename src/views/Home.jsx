@@ -26,7 +26,7 @@ const Home = () => {
       .then((result) => {
         setCurrentWeather(result.data);
         setWeatherIconUrl(
-          `http://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
+          `https://openweathermap.org/img/wn/${result.data.weather[0].icon}@2x.png`
         );
       })
       .catch((err) => {
