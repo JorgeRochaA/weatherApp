@@ -63,12 +63,16 @@
 }
 
 @media screen and (min-width: 577px) and (max-width: 1200px) and (orientation: landscape) {
-  .forecast_cards_container {
-    padding: 26px 0;
-  }
-  .highlight_message {
-    height: 52px;
-    display: grid;
-    align-items: center;
+  .forecast_container {
+    overflow-y: initial;
+    max-height: initial;
+    .forecast_cards_container {
+      padding: 26px 0;
+    }
+    .highlight_message {
+      height: 52px;
+      display: grid;
+      align-items: center;
+    }
   }
 }

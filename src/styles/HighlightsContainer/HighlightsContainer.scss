@@ -95,7 +95,11 @@
   }
   margin-bottom: 210px;
 }
-
+@media screen and (min-width: 577px) and (max-width: 1200px) and (orientation: landscape) {
+  .highlight_container {
+    margin-bottom: 0px;
+  }
+}
 @media screen and (max-width: 773px) {
   .highlight_container {
     grid-template-columns: repeat(1, auto);
