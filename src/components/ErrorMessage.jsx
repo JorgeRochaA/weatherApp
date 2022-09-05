@@ -1,16 +1,21 @@
 import React from "react";
-import "../styles/ErrorMessage/ErrorMessage.scss";
+import {
+  ErrorContainer,
+  MessageContainer,
+  CloseMessage,
+  Icon,
+} from "../styles/ErrorMessage";
 
 function ErrorMessage({ message }) {
   return (
-    <div className="error_container">
-      <div className="message_container">
+    <ErrorContainer>
+      <MessageContainer>
         <h3>{message}</h3>
-      </div>
-      <div className="close_message">
-        <i className="far fa-times-circle"></i>
-      </div>
-    </div>
+      </MessageContainer>
+      <CloseMessage>
+        <Icon className="far fa-times-circle"></Icon>
+      </CloseMessage>
+    </ErrorContainer>
   );
 }
 export default ErrorMessage;

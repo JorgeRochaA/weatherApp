@@ -5,11 +5,10 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(2, auto);
   color: #e7e7eb;
   font-family: "Raleway";
   font-style: normal;
-
   .wind_card,
   .humidity_card,
   .visibility_card,
@@ -76,10 +75,30 @@
   .humidity_card {
     text-align: center;
   }
+  .visibility_card,
+  .air_card {
+    width: 328px;
+    height: 159px;
+    background: #1e213a;
+    margin: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .card_value {
+      width: 100%;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 75px;
+      text-align: center;
+    }
+  }
+  margin-bottom: 210px;
 }
 
 @media screen and (max-width: 773px) {
   .highlight_container {
     grid-template-columns: repeat(1, auto);
+    margin-bottom: 0px;
   }
 }
